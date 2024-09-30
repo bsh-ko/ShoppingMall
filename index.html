@@ -6,38 +6,23 @@
     <title>쇼핑몰</title>
 </head>
 <body>
-    <h1>참치회 특가 판매</h1>
+    <h3>참치회 특가 판매</h3>
 
-    <select id="products" name="products" multiple size="4" onchange="displaySelectedProducts()">
+    <!--
+        html 태그에서 onxxx.. 로 이벤트 핸들러를 호출할 때
+        그 함수에 event 객체가 전달되어야 한다면
+        event라는 이름의 객체로 전달하는 방법을 추천한다. 
+    -->
+    <select id="products" multiple onchange="selectChange(event)">
         <option value="대뱃살 - 3000원">대뱃살 - 3000원</option>
         <option value="목살 - 5000원">목살 - 5000원</option>
         <option value="배꼽살 - 4000원">배꼽살 - 4000원</option>
         <option value="중뱃살 - 1000원">중뱃살 - 1000원</option>
     </select>
-
-    <br><br>
     
     <!-- 선택한 항목을 표시할 공간 -->
-    <div id="selectedProducts"></div>
-
-    <script>
-        function displaySelectedProducts() {
-            const selectedOptions = document.getElementById('products').selectedOptions;
-            const displayArea = document.getElementById('selectedProducts');
-            displayArea.innerHTML = ''; // 기존 내용을 초기화
-
-            let selectedItems = [];
-
-            for (let option of selectedOptions) {
-                selectedItems.push(option.value);
-            }
-
-            if (selectedItems.length > 0) {
-                displayArea.innerHTML = selectedItems.join('<br>'); // 선택된 항목을 줄바꿈으로 구분하여 표시
-            } else {
-                displayArea.innerHTML = '선택한 상품이 없습니다.'; // 아무것도 선택하지 않은 경우
-            }
-        }
-    </script>
+    <div id="result"></div>
+    <button onclick="payment()">결제하기</button>
+    <script src="main.js"></script>
 </body>
 </html>
