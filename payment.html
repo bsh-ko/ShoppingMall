@@ -14,5 +14,18 @@
     <br>
     <button onclick="sendPG()">결제</button>
 
+    <script>
+        // opener에서 데이터 가져와서 화면 출력
+        let totalPrice = opener.getTotalPrice()
+        document.getElementById('price').innerHTML = totalPrice
+
+        function sendPG() {
+            // PG사 연결에 의해 결제 성공했다고 가정
+            // opener에게 알려주고
+            opener.paymentSuccess(document.getElementById('cardNo').value)
+            //창 닫고.. 
+            window.close()
+        }
+    </script>
 </body>
 </html>
